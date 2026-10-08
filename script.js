@@ -25,6 +25,7 @@ function saveNotes() {
 }
 
 let notes = loadNotes();
+let searchTerm = "";
 
 // 3. Count message for zero, one and many notes
 function countMessage(total) {
@@ -37,7 +38,18 @@ function countMessage(total) {
 function render() {
   list.replaceChildren();
 
-  notes.forEach((note) => {
+        const visible = notes.filter((note) =>
+        note.text.toLowerCase().includes(searchTerm)
+    );
+
+    if (notes.length > 0 && visible.length === 0) {
+        const empty = document.createElement("li");
+        empty.classList.add("empty-state");
+        empty.textContent = "No notes match your search.";
+        list.append(empty);
+    }
+
+    visible.forEach((note) => {
     const li = document.createElement("li");
     li.classList.add("note", `category-${note.category}`);
 
@@ -114,5 +126,11 @@ input.addEventListener("input", () => {
   errorMessage.textContent = "";
 });
 
-// 7. Draw once on load
+// 7. Search
+searchInput.addEventListener("input", () => {
+  searchTerm = searchInput.value.trim().toLowerCase();
+  render();
+});
+
+// 8. Draw once on load
 render();

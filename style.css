@@ -1,0 +1,227 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Base */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
+  line-height: 1.5;
+}
+
+header {
+  background-color: #8e0000;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header p {
+  margin: 8px 0 0;
+}
+
+main {
+  max-width: 640px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+footer {
+  text-align: center;
+  color: #777;
+  padding: 16px;
+}
+
+/* Hides a label visually but keeps it for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Form: Flexbox */
+#note-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#note-form label[for="note-input"] {
+  width: 100%;
+  font-weight: bold;
+}
+
+#note-input {
+  flex: 1;
+  min-width: 0;
+}
+
+input[type="text"],
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: 2px solid #0ba184;
+  border-color: #0ba184;
+}
+
+#error-message {
+  min-height: 1.5em;
+  margin: 8px 0 0;
+  color: #c92a2a;
+  font-weight: bold;
+}
+
+/* Search */
+label[for="search-input"] {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+#search-input {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+#note-count {
+  color: #555;
+  margin: 0 0 12px;
+}
+
+/* Notes list: each note is a card */
+#notes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-left-width: 6px;
+  border-radius: 8px;
+  background-color: #fffbe6;
+}
+
+.note-text {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.note-meta {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.empty-state {
+  color: #666;
+  font-style: italic;
+}
+
+/* A different style for each category */
+.category-personal {
+  border-left-color: #0ba184;
+  background-color: #e8f7f3;
+}
+
+.category-work {
+  border-left-color: #8e0000;
+  background-color: #fdecec;
+}
+
+.category-study {
+  border-left-color: #1c61b8;
+  background-color: #e8f0fb;
+}
+
+/* Buttons */
+button {
+  background-color: #0ba184;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #088a70;
+  transform: translateY(-2px);
+}
+
+button:focus-visible {
+  outline: 3px solid #222;
+  outline-offset: 3px;
+}
+
+.delete-btn {
+  background-color: #8e0000;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.delete-btn:hover {
+  background-color: #6b0000;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  header {
+    padding: 16px 12px;
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+  }
+
+  #note-form {
+    flex-direction: column;
+  }
+
+  .note {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
